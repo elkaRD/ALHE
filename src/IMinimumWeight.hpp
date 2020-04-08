@@ -9,6 +9,8 @@ public:
         int vertices, edges;
         inputData >> vertices >> edges;
         
+        onLoadParams(vertices, edges);
+        
         for (int i = 0; i < vertices; ++i)
         {
             int id;
@@ -30,6 +32,7 @@ public:
     virtual std::vector<int> solve(int cityBeg, int cityEnd) = 0;
     
 protected:
+    virtual void onLoadParams(int vertices, int edges) = 0;
     virtual void onLoadVertex(int id, double x, double y) = 0;
     virtual void onLoadEdge(int a, int b) = 0;
 };
