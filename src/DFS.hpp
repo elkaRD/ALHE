@@ -8,7 +8,7 @@
 
 class DFS : public IMinimumWeight
 {
-public:
+private:
     struct Node
     {
         int id;
@@ -35,21 +35,22 @@ public:
             return;
         }
         
-        nodes[curId]->visited = true;
-        
         for (auto p : nodes[curId]->neighbours)
         {
             if (!nodes[p.first]->visited)
             {
                 dst += p.second;
                 path.push_back(p.first);
+                nodes[p.first]->visited = true;
                 nextNode(p.first, targetId, path, dst);
+                nodes[p.first]->visited = false;
                 path.pop_back();
                 dst -= p.second;
             }
         }
     }
-    
+  
+public:
     std::vector<int> solve(int cityBeg, int cityEnd)
     {
         curBest = DBL_MAX;
@@ -60,6 +61,14 @@ public:
         nextNode(cityBeg, cityEnd, path, 0);
         
         return bestPath;
+    }
+    
+    ~DFS()
+    {
+        for (auto node : nodes)
+            delete node;
+        
+        nodes.clear();
     }
     
 protected:

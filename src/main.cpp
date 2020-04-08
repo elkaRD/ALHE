@@ -33,12 +33,26 @@ int main()
     ss_copy << ss.str();
     unordered_map<int, string> cityIdToName = loadDictionary(ss_copy);
     
-    DFS dfs;
-    dfs.loadData(ss);
-    vector<int> solution = dfs.solve(25, 15);
+    for (int i = 0; i < 28; ++i)
+    {
+        for (int j = 0; j < 28; ++j)
+        {
+            if (i == j) continue;
+            
+            stringstream ss_copy;
+            ss_copy << ss.str();
+            
+            DFS dfs;
+            dfs.loadData(ss_copy);
+            vector<int> solution = dfs.solve(i, j);
+            
+            cout << i << ", " << j << " DONE" << endl;
+            
+//            for (const auto it : solution)
+//                cout << it << " " << cityIdToName[it] << endl;
+        }
+    }
     
-    for (const auto it : solution)
-        cout << it << " " << cityIdToName[it] << endl;
     
     return 0;
 }
