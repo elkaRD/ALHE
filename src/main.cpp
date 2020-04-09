@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "DFS.hpp"
+#include "A_star.h"
 #include <fstream>
 #include <unordered_map>
 #include <sstream>
@@ -24,7 +25,7 @@ unordered_map<int, string> loadDictionary(istream &input)
 
 int main()
 {
-    ifstream file("input.txt");
+    ifstream file("C:\\Users\\Michal\\Desktop\\ALHE\\data\\input.txt");
     stringstream ss;
     ss << file.rdbuf();
     file.close();
@@ -33,12 +34,21 @@ int main()
     ss_copy << ss.str();
     unordered_map<int, string> cityIdToName = loadDictionary(ss_copy);
     
-    DFS dfs;
+
+
+    /*DFS dfs;
     dfs.loadData(ss);
-    vector<int> solution = dfs.solve(25, 15);
-    
+    vector<int> solution = dfs.solve(7, 9);
     for (const auto it : solution)
         cout << it << " " << cityIdToName[it] << endl;
-    
+
+     */A_star astar;
+    astar.loadData(ss);
+    vector<int> solution1 = astar.solve(7, 9);
+
+    for (const auto it : solution1)
+        cout << it << " " << cityIdToName[it] << endl;
+
+
     return 0;
 }
