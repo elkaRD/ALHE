@@ -25,7 +25,7 @@ unordered_map<int, string> loadDictionary(istream &input)
 
 int main()
 {
-    ifstream file("C:\\Users\\Michal\\Desktop\\ALHE\\data\\input.txt");
+    ifstream file("input.txt");
     stringstream ss;
     ss << file.rdbuf();
     file.close();
