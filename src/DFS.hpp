@@ -42,7 +42,9 @@ private:
                 dst += p.second;
                 path.push_back(p.first);
                 nodes[p.first]->visited = true;
+                
                 nextNode(p.first, targetId, path, dst);
+                
                 nodes[p.first]->visited = false;
                 path.pop_back();
                 dst -= p.second;
