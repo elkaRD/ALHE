@@ -31,8 +31,20 @@ public:
     }
     virtual std::vector<int> solve(int cityBeg, int cityEnd) = 0;
     
+    int getVisitedVerticesCounter()
+    {
+        return visitedVerticesCounter;
+    }
+    
 protected:
     virtual void onLoadParams(int vertices, int edges) = 0;
     virtual void onLoadVertex(int id, double x, double y) = 0;
     virtual void onLoadEdge(int a, int b) = 0;
+    
+    void onVisitedCounter()
+    {
+        ++visitedVerticesCounter;
+    }
+private:
+    int visitedVerticesCounter = 0;
 };

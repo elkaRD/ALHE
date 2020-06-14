@@ -25,6 +25,8 @@ private:
     {
         if (dst > curBest) return;
         
+        onVisitedCounter();
+        
         if (curId == targetId)
         {
             if (dst < curBest)

@@ -63,6 +63,8 @@ public:
 
 
         while(!openSet.empty()) {
+            
+            onVisitedCounter();
 
             Node* current;
             double f_min_value = 99999;
